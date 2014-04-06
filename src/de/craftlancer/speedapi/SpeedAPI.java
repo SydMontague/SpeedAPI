@@ -10,11 +10,12 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public class SpeedAPI extends JavaPlugin
 {
-    private float defaultSpeed = 0.2F;
+    private static SpeedAPI instance;    
+    private final static float DEFAULT_SPEED = 0.2F;
+    
     private Map<String, SpeedModifier> modMap = new HashMap<String, SpeedModifier>();
     private Map<Integer, List<SpeedModifier>> prioMap = new HashMap<Integer, List<SpeedModifier>>();
     private Map<String, Float> speedMap = new HashMap<String, Float>();
-    private static SpeedAPI instance;
     private SpeedCalcTask calcTask;
     private SpeedSetTask setTask;
     
@@ -61,18 +62,18 @@ public class SpeedAPI extends JavaPlugin
 
     public float getDefaultSpeed()
     {
-        return defaultSpeed;
+        return DEFAULT_SPEED;
     }
 
-    public float getSpeed(Player p)
+    public float getSpeed(Player player)
     {
-        if(!speedMap.containsKey(p.getName()))
+        if(!speedMap.containsKey(player.getName()))
             return getDefaultSpeed();
-        return speedMap.get(p.getName());
+        return speedMap.get(player.getName());
     }
     
-    public void setSpeed(Player p, float f)
+    public void setSpeed(Player player, float speed)
     {
-        speedMap.put(p.getName(), f);
+        speedMap.put(player.getName(), speed);
     }
 }
