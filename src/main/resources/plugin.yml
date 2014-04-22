@@ -1,4 +1,4 @@
 name: SpeedAPI
 main: de.craftlancer.speedapi.SpeedAPI
-version: 0.1
+version: ${project.version}
 description: SpeedAPI
