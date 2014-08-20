@@ -22,4 +22,6 @@ public abstract class SpeedModifier
     public abstract float getSpeedChange(Player p, float speed);
 
     public abstract boolean isApplicable(Player p);
+
+    public abstract boolean isInstant(Player p);
 }

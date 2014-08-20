@@ -28,7 +28,13 @@ public class SpeedCalcTask extends BukkitRunnable
                 
                 if (plugin.getPriorities().containsKey(i))
                     for (SpeedModifier mod : plugin.getPriorities().get(i))
-                        newspeed += mod.getSpeedChange(p, speed);
+                    {
+                        float change = mod.getSpeedChange(p, speed);
+                        
+                        newspeed += change;
+                        if (mod.isInstant(p))
+                            p.setWalkSpeed(p.getWalkSpeed() + change);
+                    }
                 
                 speed = newspeed;
             }
